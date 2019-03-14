@@ -1,6 +1,6 @@
 /* 
 cleans .pdb and intermediate folders from ue4 projects and plugins.
-Requires verbose input (--p ..) because this deletes files so you are aware of what is happening.
+Requires verbose input (--p auto) because this deletes files so you are aware of what is happening.
 Use -x if lazy
 Use -d to preview what you would've deleted
 */
@@ -26,7 +26,7 @@ const isInNodeModules = scriptFilePath.endsWith('\\node_modules\\clean-ue4\\clea
 
 //check args
 if (process.argv.length <= 2) {
-	console.log("Usage: ".bold, fileName, "--p".gray, "path/to/directory (requires .. without -u)",
+	console.log("Usage: ".bold, fileName, "--p".gray, "path/to/directory (requires auto without -u)",
 		"\n-y auto confirm".gray, 
 		"\n-u unrestricted location".gray,
 		"\n-i del intermediate folders".gray,
@@ -38,11 +38,21 @@ if (process.argv.length <= 2) {
 }
 
 if(argv.x){
-	argv.p = '..';
+	argv.p = 'auto';
 	argv.i = true;
 	argv.b = true;
 	argv.s = true;
 	argv.y = true;
+}
+
+//auto resolve path
+if(argv.p == 'auto'){
+	if(isInNodeModules){
+		argv.p = '../..';
+	}
+	else{
+		argv.p = '..';
+	}
 }
 
 const searchPath = pathUtil.resolve(argv.p);

@@ -1,1 +1,2 @@
-node clean-ue4 --p ../.. -i -s -b
+node clean-ue4 --p auto -i -s -b
+pause
