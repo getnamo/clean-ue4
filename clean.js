@@ -1,6 +1,6 @@
 /* 
 cleans .pdb and intermediate folders from ue4 projects and plugins.
-Requires verbose input (--p ../) because this deletes files so you are aware of what is happening.
+Requires verbose input (--p ..) because this deletes files so you are aware of what is happening.
 Use -x if lazy
 Use -d to preview what you would've deleted
 */
@@ -22,9 +22,11 @@ const fileName = scriptFilePath.substring(scriptFilePath.lastIndexOf('\\')+1);
 const argv = require('minimist')(process.argv.slice(2));
 const unrestricted = argv.u != undefined;
 
+const isInNodeModules = scriptFilePath.endsWith('\\node_modules\\clean-ue4\\clean.js');
+
 //check args
 if (process.argv.length <= 2) {
-	console.log("Usage: ".bold, fileName, "--p".gray, "path/to/directory (requires ../ without -u)",
+	console.log("Usage: ".bold, fileName, "--p".gray, "path/to/directory (requires .. without -u)",
 		"\n-y auto confirm".gray, 
 		"\n-u unrestricted location".gray,
 		"\n-i del intermediate folders".gray,
@@ -36,7 +38,7 @@ if (process.argv.length <= 2) {
 }
 
 if(argv.x){
-	argv.p = '../';
+	argv.p = '..';
 	argv.i = true;
 	argv.b = true;
 	argv.s = true;
@@ -47,9 +49,14 @@ const searchPath = pathUtil.resolve(argv.p);
 const autoYes = argv.y != undefined;
 const relativePath = pathUtil.relative(scriptFilePath, searchPath);
 
+let defaultPath = '..\\..';
+if(isInNodeModules){
+	defaultPath = '..\\..\\..';
+}
+
 //path restriction test
-if(!unrestricted && relativePath != '..\\..'){
-	console.log('Error!'.red, searchPath.gray,'path not allowed without unrestricted mode', '(-u)'.gray + '.', 'Default path should be', '--p'.gray, '../');
+if(!unrestricted && relativePath != defaultPath){
+	console.log('Error!'.red, searchPath.gray,'path not allowed without unrestricted mode', '(-u)'.gray + '.', 'Default path should be', '--p'.gray, '..');
 	process.exit(-1);
 }
 

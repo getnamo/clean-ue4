@@ -1,6 +1,6 @@
 {
   "name": "clean-ue4",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple npm script to clean Intermediate, Saved folders, and .pdbs from unreal projects and plugins for release prep.",
   "main": "clean.js",
   "dependencies": {
