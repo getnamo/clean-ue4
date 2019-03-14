@@ -57,4 +57,4 @@ I would recommend doing a dry run first...
 ```node clean-ue4 --x -d```
 
 #### Very lazy mode
-Click on the bat.
+Click on the _FullCleanForRelease.bat_.
