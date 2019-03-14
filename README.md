@@ -4,14 +4,18 @@ Simple npm script to clean Intermediate, Saved folders, and .pdbs from unreal pr
 ## Setup
 1. Install [nodejs](https://nodejs.org/en/download/)
 2. Navigate to ue4 project of choice and open a powershell window there
-### via git
-3. ```git clone https://github.com/getnamo/clean-ue4.git```
-4. ```npm i```
-5. ```node clean``` this will give you usage instructions
+
 ### via npm
 3. ```npm i clean-ue4```
 4. ```cd node_modules```
 5. ```node clean-ue4``` this will give you usage instructions
+
+### via git
+3. ```git clone https://github.com/getnamo/clean-ue4.git```
+4. ```cd clean-ue4```
+5. ```npm i```
+6. ```node clean``` this will give you usage instructions
+
 
 ## Usage
 
