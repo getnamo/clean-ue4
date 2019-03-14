@@ -22,7 +22,7 @@ const fileName = scriptFilePath.substring(scriptFilePath.lastIndexOf('\\')+1);
 const argv = require('minimist')(process.argv.slice(2));
 const unrestricted = argv.u != undefined;
 
-const isInNodeModules = scriptFilePath.endsWith('\\node_modules\\clean-ue4\\clean.js');
+const isInNodeModules = scriptFilePath.endsWith('\\node_modules\\clean-ue4\\clean-ue4.js');
 
 //check args
 if (process.argv.length <= 2) {
