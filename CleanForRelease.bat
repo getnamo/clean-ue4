@@ -1,0 +1,1 @@
+node clean-ue4 --p .. -i -s -b
