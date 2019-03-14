@@ -21,7 +21,7 @@ Simple npm script to clean Intermediate, Saved folders, and .pdbs from unreal pr
 
 Format is
 
-```node clean-ue4 --p <path>``` where path should only be ```../```
+```node clean-ue4 --p <path>``` where path should only be ```auto``` unless you use ```-u```, then path can be anything.
 
 You'll need one of the following options
 
