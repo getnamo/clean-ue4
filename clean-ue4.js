@@ -33,9 +33,12 @@ if (process.argv.length <= 2) {
 		"\n-b del pdbs".gray,
 		"\n-s del saved".gray,
 		"\n-d dry run".gray,
+		"\n-c custom pattern string".gray,
 		"\n-x (lazy option) del everything default location".gray);
 	process.exit(-1);
 }
+
+console.log(argv);
 
 if(argv.x){
 	argv.p = 'auto';
@@ -43,6 +46,10 @@ if(argv.x){
 	argv.b = true;
 	argv.s = true;
 	argv.y = true;
+}
+
+if(!argv.p){
+	argv.p = 'auto';
 }
 
 //auto resolve path
@@ -155,6 +162,15 @@ async function cleanFileList(){
 	//saved
 	if(argv.s){
 		patterns.push('Saved');
+	}
+	if(argv.c){
+		if(Array.isArray(argv.c)){
+			patterns.push(...argv.c);
+		}
+		else{
+			patterns.push(argv.c);
+		}
+		
 	}
 	patterns = patterns.map(pattern=> searchPath + '/' + pattern);
 
