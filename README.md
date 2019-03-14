@@ -26,9 +26,14 @@ Format is
 You'll need one of the following options
 
 #### Options
+
 ```-i``` for intermediate folders
+
 ```-s``` for saved folder
+
 ```-b``` for *.pdb files
+
+```-c``` for custom pattern, can use multiple e.g. ```-c /Plugins/MyFolder -c /Plugins/MyOtherFolder```
 
 e.g. for everything
 
